@@ -1,4 +1,4 @@
-import Layout from "../../Layout";
+import Layout from "../../../Layout";
 import Faqs from "./Faqs";
 import RichiestaInformazioni from "./RichiestaInformazioni";
 
@@ -50,7 +50,7 @@ const PraticheAuto = (props: PraticheAutoProps) => {
         </div>
         <div className="container h-full">
           <div className="flex justify-center items-end h-full">
-            <h1 className="text-5xl font-bold ">{section1.heading}</h1>
+            <h1 className="text-4xl font-bold ">{section1.heading}</h1>
           </div>
         </div>
       </section>

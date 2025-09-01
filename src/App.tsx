@@ -1,21 +1,15 @@
-import { useLayoutEffect } from "react";
 import "./App.css";
+import Home from "./components/pages/home/Home";
 import {
   Route,
   BrowserRouter as Router,
   Routes,
   useLocation,
 } from "react-router-dom";
-import Home from "./pages/home/Home";
-import PolizzeAuto from "./pages/assicurazioni/polizze-auto/PolizzeAuto";
-import PersoneFamiglia from "./pages/assicurazioni/persone-famiglia/PersoneFamiglia";
-import ProfessionistiAziende from "./pages/assicurazioni/professionisti-aziende/ProfessionistiAziende";
-import FideiussioniCauzioni from "./pages/assicurazioni/fideiussioni-cauzioni/FideiussioniCauzioni";
-import RischiSpeciali from "./pages/assicurazioni/rischiSpeciali/RischiSpeciali";
-import PraticheAuto from "./pages/pratiche-auto/PraticheAuto";
-import Contattaci from "./pages/contattaci/Contattaci";
-import LavoraConNoi from "./pages/lavora-con-noi/LavoraConNoi";
-import ChiSiamo from "./pages/chi-siamo/ChiSiamo";
+import PolizzeAuto from "./components/pages/polizze-auto/PolizzeAuto";
+import PraticheAuto from "./components/pages/pratiche-auto/PraticheAuto";
+import Contattaci from "./components/pages/contattaci/Contattaci";
+import { useLayoutEffect } from "react";
 
 const Wrapper = ({ children }: { children: any }) => {
   const location = useLocation();
@@ -35,22 +29,8 @@ function App() {
         <Wrapper>
           <Routes>
             <Route index element={<Home />} />
-            <Route path="assicurazioni">
-              <Route path="polizze-auto" element={<PolizzeAuto />} />
-              <Route path="persone-famiglia" element={<PersoneFamiglia />} />
-              <Route
-                path="professionisti-aziende"
-                element={<ProfessionistiAziende />}
-              />
-              <Route
-                path="fiduiussioni-cauzioni"
-                element={<FideiussioniCauzioni />}
-              />
-              <Route path="rischi-speciali" element={<RischiSpeciali />} />
-            </Route>
+            <Route path="polizze-auto" element={<PolizzeAuto />} />
             <Route path="pratiche-auto" element={<PraticheAuto />} />
-            <Route path="lavora-con-noi" element={<LavoraConNoi />} />
-            <Route path="chi-siamo" element={<ChiSiamo />} />
             <Route path="contattaci" element={<Contattaci />} />
           </Routes>
         </Wrapper>

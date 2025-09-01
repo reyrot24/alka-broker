@@ -3,11 +3,15 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-
+import useMediaQuery from "../../../lib/useMediaQuery";
+import { Button, type ButtonProps } from "../../ui/button";
 import { Link, NavLink } from "react-router-dom";
-import useMediaQuery from "../../lib/useMediaQuery";
-import { navbar } from "../../constants/content";
-import { Button } from "../../components/ui/button";
+
+type ImageProps = {
+  url?: string;
+  src: string;
+  alt?: string;
+};
 
 type NavLink = {
   url: string;
@@ -15,7 +19,21 @@ type NavLink = {
   subMenuLinks?: NavLink[];
 };
 
-export const Navbar1 = () => {
+type Props = {
+  logo: ImageProps;
+  navLinks: NavLink[];
+  buttons: ButtonProps[];
+};
+
+export type Navbar1Props = React.ComponentPropsWithoutRef<"section"> &
+  Partial<Props>;
+
+export const Navbar1 = (props: Navbar1Props) => {
+  const { logo, navLinks, buttons } = {
+    ...Navbar1Defaults,
+    ...props,
+  };
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isMobile = useMediaQuery("(max-width: 991px)");
 
@@ -26,8 +44,8 @@ export const Navbar1 = () => {
     >
       <div className="size-full lg:flex lg:items-center lg:justify-between">
         <div className="flex min-h-16 items-center justify-between px-[5%] md:min-h-18 lg:min-h-full lg:px-0">
-          <a href={navbar.logo.url}>
-            <img src={navbar.logo.src} alt={navbar.logo.alt} />
+          <a href={logo.url}>
+            <img src={logo.src} alt={logo.alt} />
           </a>
           <button
             className="-mr-2 flex size-12 flex-col items-center justify-center lg:hidden"
@@ -65,7 +83,7 @@ export const Navbar1 = () => {
           transition={{ duration: 0.4 }}
           className="overflow-hidden px-[5%] lg:flex lg:items-center lg:px-0 lg:[--height-closed:auto] lg:[--height-open:auto]"
         >
-          {navbar.navLinks.map((navLink, index) =>
+          {navLinks.map((navLink, index) =>
             navLink.subMenuLinks && navLink.subMenuLinks.length > 0 ? (
               <SubMenu key={index} navLink={navLink} isMobile={isMobile} />
             ) : (
@@ -79,9 +97,13 @@ export const Navbar1 = () => {
             )
           )}
           <div className="mt-6 flex flex-col items-center gap-4 lg:ml-4 lg:mt-0 lg:flex-row">
-            <Link to="/contattaci">
-              <Button className="w-full">{navbar.button.title}</Button>
-            </Link>
+            {buttons.map((button, index) => (
+              <Link to="/contattaci">
+                <Button key={index} {...button} className="w-full">
+                  {button.title}
+                </Button>
+              </Link>
+            ))}
           </div>
         </motion.div>
       </div>
@@ -154,6 +176,38 @@ const SubMenu = ({
       )}
     </div>
   );
+};
+
+export const Navbar1Defaults: Props = {
+  logo: {
+    url: "/",
+    src: "https://d22po4pjz3o32e.cloudfront.net/logo-image.svg",
+    alt: "Logo image",
+  },
+  navLinks: [
+    {
+      title: "Assicurazioni",
+      url: "#",
+      subMenuLinks: [
+        { title: "Polizze auto", url: "/polizze-auto" },
+        { title: "Persone e famiglia", url: "#" },
+        { title: "Professionisti e aziende", url: "#" },
+        { title: "Fideiussioni e cauzioni", url: "#" },
+        { title: "Rischi speciali", url: "#" },
+      ],
+    },
+    { title: "Energia", url: "#" },
+    { title: "Noleggio a lungo termine", url: "#" },
+    { title: "Pratiche auto", url: "/pratiche-auto" },
+    { title: "Lavora con noi", url: "#" },
+    { title: "Chi siamo", url: "#" },
+  ],
+  buttons: [
+    {
+      title: "Contattaci",
+      size: "sm",
+    },
+  ],
 };
 
 const topLineVariants = {
