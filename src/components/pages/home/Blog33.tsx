@@ -1,5 +1,5 @@
 import { ChevronRight } from "lucide-react";
-import { Button, type ButtonProps } from "../../components/ui/button";
+import { Button, type ButtonProps } from "../../ui/button";
 
 type ImageProps = {
   src: string;
