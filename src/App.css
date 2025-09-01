@@ -118,3 +118,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+p {
+  line-height: 2;
+  text-align: center;
+}

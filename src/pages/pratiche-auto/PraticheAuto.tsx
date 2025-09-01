@@ -1,4 +1,5 @@
-import Layout from "../../../Layout";
+import { Header } from "../../components/sections/Header";
+import Layout from "../../Layout";
 import Faqs from "./Faqs";
 import RichiestaInformazioni from "./RichiestaInformazioni";
 
@@ -40,20 +41,7 @@ const PraticheAuto = (props: PraticheAutoProps) => {
   };
   return (
     <Layout>
-      <section className="mt-[80px] px-[5%] py-16  h-96 relative">
-        <div>
-          <img
-            src={section1.image.src}
-            className="absolute inset-0 size-full object-cover -z-10"
-            alt={section1.image.alt}
-          />
-        </div>
-        <div className="container h-full">
-          <div className="flex justify-center items-end h-full">
-            <h1 className="text-4xl font-bold ">{section1.heading}</h1>
-          </div>
-        </div>
-      </section>
+      <Header heading={section1.heading} image={section1.image} />
       <section className="px-[5%] py-16 relative">
         <div className="h-full">
           <div className="flex justify-center items-end h-full">
