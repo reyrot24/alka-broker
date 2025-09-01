@@ -38,9 +38,7 @@ export const Blog33 = (props: Blog33Props) => {
       <div className="container">
         <div className="mb-12 md:mb-18 lg:mb-20">
           <div className="mx-auto w-full max-w-lg text-center">
-            <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-6xl">
-              {heading}
-            </h2>
+            <h2 className="rb-5 mb-5 text-5xl font-bold ">{heading}</h2>
             <p className="md:text-md">{description}</p>
           </div>
         </div>

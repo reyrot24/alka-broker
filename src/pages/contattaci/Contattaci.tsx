@@ -1,7 +1,8 @@
 import { Mail, Phone } from "lucide-react";
-import Layout from "../../../Layout";
+
 import { Form } from "./Form";
 import type { ReactNode } from "react";
+import Layout from "../../Layout";
 
 type ImageProps = {
   src: string;
@@ -97,7 +98,7 @@ export default Contattaci;
 
 const ContattaciDefaults: Props = {
   section1: {
-    heading: "Da sempre al fianco dell’automobilista",
+    heading: "",
     image: {
       src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
       alt: "Relume placeholder image",
